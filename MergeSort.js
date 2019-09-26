@@ -3,15 +3,15 @@ function MergeSort(arr) {
     if(arr.length <= 1 ){
         return arr
     }
-
-    return divider(arr);
     
+    return divider(arr);
 }
 
 function divider(arr) {
     let mid = Math.floor(arr.length / 2);
     let lhs = arr.slice(0, mid);
     let rhs = arr.slice(mid, arr.length);
+
     if(arr.length <= 1 ){
         return arr
     } else {
