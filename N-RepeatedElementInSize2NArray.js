@@ -1,56 +1,15 @@
 var repeatedNTimes = function(A) {
-    let answerArr = Array.from(Array(A.length), () => 0);
+    let answerArr = [];
 
     for(let i = 0; i < A.length; i++) {
-        answerArr[A[i]] = answerArr[A[i]] + 1;
+        if(!answerArr.includes(A[i])){
+            answerArr.push(A[i])
+        } else {
+            return A[i]
+        }
     }
-    return answerArr.indexOf(Math.max(...answerArr));
+
+    return -1;
 };
 
-console.log(repeatedNTimes([1,2,3,3]));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const templeteArr = [];
-
-// for(let i = 0; i < A.length; i++) {
-//     if(!templeteArr.includes(A[i])){
-//         templeteArr.push(A[i])
-//     } else {
-//         return A[i];
-//     }
-// }
-// return -1
+console.log(repeatedNTimes([2,6,2,1]));
