@@ -21,7 +21,7 @@ var numUniqueEmails = function (emails) {
             actuallEmails.push(emailStr);
         }
     }
-    // console.log(actuallEmails.length)
+    console.log(actuallEmails.length)
     return actuallEmails.length
 };
 
