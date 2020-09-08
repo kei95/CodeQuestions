@@ -9,7 +9,7 @@ function foo(lines) {
 
 /**
  * Show console log beased on the word passed as an argument
- * {string} word - string to parse
+ * @param {string} word - string to parse
  **/
 function wordParser(word) {
   if (
