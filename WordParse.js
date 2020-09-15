@@ -8,7 +8,7 @@ function foo(lines) {
 }
 
 /**
- * Show console log beased on the word passed as an argument
+ * Show console log based on the word passed as an argument
  * @param {string} word - string to parse
  **/
 function wordParser(word) {
