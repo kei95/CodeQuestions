@@ -34,20 +34,24 @@ function findObject(cx, cy, e, f, d, px, py) {
   const position = Math.sqrt(Math.pow(cx - px, 2) + Math.pow(cy - py, 2));
   if (position > d) return false;
   let target = Math.atan2(py - cy, px - cx) * (180 / Math.PI);
-  if (target < 0) target += 360;
+  // if (target < 0) target += 360;
   const maxAngle = parseInt(e, 10) + f / 2;
   const minAngle = parseInt(e, 10) - f / 2;
+  console.log("max", maxAngle, "min", minAngle, "target", target);
   if (target > maxAngle || target < minAngle) return false;
+  // if (px < cx && py < cy) return false;
   return true;
 }
 
-foo([
-  "30 10 3 4",
-  "0 0 30 30 15",
-  "15 5 210 30 15",
-  "30 10 270 45 5",
-  "7 2",
-  "7 8",
-  "30 9",
-  "30 0",
-]);
+foo(["30 10 1 4", "12 12 45 22.5 15", "12 7"]);
+
+// foo([
+//   "30 10 3 4",
+//   "0 0 30 30 15",
+//   "15 5 210 30 15",
+//   "30 10 270 45 5",
+//   "7 2",
+//   "7 8",
+//   "30 9",
+//   "30 0",
+// ]);
