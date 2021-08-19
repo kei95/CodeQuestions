@@ -32,3 +32,6 @@ function helper(valList, node: ListNode): boolean {
   valList.add(node);
   return helper(valList, node.next);
 }
+
+// time O(n)
+// Space O(n)
