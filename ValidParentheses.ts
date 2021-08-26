@@ -1,24 +1,38 @@
 // https://leetcode.com/problems/valid-parentheses/submissions/
 
+interface IDIC {
+  ")": string;
+  "]": string;
+  "}": string;
+}
+
+const DIC: IDIC = {
+  ")": "(",
+  "]": "[",
+  "}": "{",
+};
+
 function isValid(s: string): boolean {
+  if (!s) return false;
   const chars: string[] = s.split("");
   const stack: string[] = [];
-  const dic = {
-    ")": "(",
-    "]": "[",
-    "}": "{",
-  };
+
   for (let i = 0; i < chars.length; i++) {
-    if (chars[i] in dic) {
-      const correspondigChar = dic[chars[i]];
-      if (correspondigChar === stack[stack.length - 1]) {
+    const currentChar = chars[i];
+    const currentDicChar = DIC[currentChar];
+    if (!currentDicChar) {
+      stack.push(chars[i]);
+    } else {
+      if (stack[stack.length - 1] === currentDicChar) {
         stack.pop();
       } else {
         return false;
       }
-    } else {
-      stack.push(chars[i]);
     }
   }
-  return stack.length === 0 ? true : false;
+
+  return stack.length === 0;
 }
+
+// time: O(n)
+// space: O(n)
