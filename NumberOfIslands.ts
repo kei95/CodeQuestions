@@ -1,37 +1,39 @@
 // https://leetcode.com/problems/number-of-islands/submissions/
 
-function numIslands(grid: string[][]): number {
+/**
+ * @param {character[][]} grid
+ * @return {number}
+ */
+var numIslands = function (grid: string[][]): number {
   let islandsNum = 0;
-  for (let i: number = 0; i < grid.length; i++) {
-    for (let j: number = 0; j < grid[i].length; j++) {
-      if (grid[i][j] === "1") {
+  for (let column = 0; column < grid.length; column++) {
+    for (let row = 0; row < grid[column].length; row++) {
+      if (grid[column][row] === "1") {
         islandsNum++;
-        helper(i, j, grid);
+        helper(column, row, grid);
       }
     }
   }
   return islandsNum;
+};
+
+function helper(column: number, row: number, grid: string[][]): void {
+  if (!grid[column] || !grid[column][row] || grid[column][row] !== "1") return;
+  grid[column][row] = "2";
+  helper(column + 1, row, grid); // vertical down
+  helper(column - 1, row, grid); // vertical up
+  helper(column, row - 1, grid); // left
+  helper(column, row + 1, grid); // right
 }
 
-function helper(row: number, column: number, grid: string[][]): void {
-  if (
-    row < 0 ||
-    column < 0 ||
-    row >= grid.length ||
-    column >= grid[row].length ||
-    grid[row][column] !== "1"
-  )
-    return;
-  grid[row][column] = "2";
-  helper(row - 1, column, grid);
-  helper(row + 1, column, grid);
-  helper(row, column - 1, grid);
-  helper(row, column + 1, grid);
-}
+// time O(n)
+// space O(1)
 
-//time O(n*m)
-//space O(1)
-
+//[
+// ["1","1","1"],
+// ["0","1","0"],
+// ["1","1","1"]
+// ]
 console.log(
   numIslands([
     ["1", "1", "0", "0", "0"],
